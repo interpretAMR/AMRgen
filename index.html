@@ -95,11 +95,13 @@
 <div class="section level2">
 <h2 id="usage-examples">Usage Examples<a class="anchor" aria-label="anchor" href="#usage-examples"></a>
 </h2>
-<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://interpretAMR.github.io/AMRgen/" class="external-link">AMRgen</a></span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://interpretAMR.github.io/AMRgen/" class="external-link">AMRgen</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="import-pheno-data-from-ncbi-ast-and-geno-data-amrfinderplus-output-and-compare-genopheno-for-drugs-of-interest">Import pheno data (from NCBI AST) and geno data (AMRfinderplus output), and compare geno/pheno for drugs of interest<a class="anchor" aria-label="anchor" href="#import-pheno-data-from-ncbi-ast-and-geno-data-amrfinderplus-output-and-compare-genopheno-for-drugs-of-interest"></a>
 </h3>
-<pre><code><span><span class="co"># small example E. coli AST data from NCBI</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># small example E. coli AST data from NCBI</span></span>
 <span><span class="va">ecoli_ast_raw</span></span>
 <span></span>
 <span><span class="co"># import without re-interpreting resistance</span></span>
@@ -109,18 +111,20 @@
 <span><span class="va">ecoli_geno_raw</span></span>
 <span></span>
 <span><span class="co"># import AMRfinderplus data</span></span>
-<span><span class="va">geno</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"Name"</span><span class="op">)</span></span></code></pre>
+<span><span class="va">geno</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"Name"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="import-small-example-e-coli-ast-data-from-ncbi-and-re-interpret-resistance-and-ecoff-using-amr-package">Import small example E. coli AST data from NCBI, and re-interpret resistance and ECOFF using AMR package<a class="anchor" aria-label="anchor" href="#import-small-example-e-coli-ast-data-from-ncbi-and-re-interpret-resistance-and-ecoff-using-amr-package"></a>
 </h3>
 <p><em><strong>(WARNING: phenotype interpretation can take a few minutes)</strong></em></p>
-<pre><code><span><span class="va">pheno</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_ncbi_ast.html">import_ncbi_ast</a></span><span class="op">(</span><span class="va">ecoli_ast_raw</span>, interpret <span class="op">=</span> <span class="cn">T</span>, ecoff<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pheno</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_ncbi_ast.html">import_ncbi_ast</a></span><span class="op">(</span><span class="va">ecoli_ast_raw</span>, interpret <span class="op">=</span> <span class="cn">T</span>, ecoff<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="investigate-ciprofloxacin-resistance-vs-quinolone-genotype-markers-via-solo-ppv-and-upset-plots">Investigate ciprofloxacin resistance vs quinolone genotype markers, via solo PPV and upset plots<a class="anchor" aria-label="anchor" href="#investigate-ciprofloxacin-resistance-vs-quinolone-genotype-markers-via-solo-ppv-and-upset-plots"></a>
 </h3>
-<pre><code><span><span class="co"># larger example E. coli AST data from NCBI, already imported (with import_ncbi_ast) and re-interpreted (with as.sir)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># larger example E. coli AST data from NCBI, already imported (with import_ncbi_ast) and re-interpreted (with as.sir)</span></span>
 <span><span class="va">ecoli_ast</span></span>
 <span></span>
 <span><span class="co"># import matching AMRfinderplus data</span></span>
@@ -143,12 +147,13 @@
 <span><span class="fu"><a href="reference/amr_complexUpset.html">amr_complexUpset</a></span><span class="op">(</span><span class="va">cip_bin</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># do upset plot of MIC vs genotype marker combinations (using AMRgen function, not requiring complexUpset)</span></span>
-<span><span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">cip_bin</span>, min_set_size<span class="op">=</span><span class="fl">2</span>, order<span class="op">=</span><span class="st">"mic"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">cip_bin</span>, min_set_size<span class="op">=</span><span class="fl">2</span>, order<span class="op">=</span><span class="st">"mic"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="explore-logistic-regression-models-of-genotype-vs-phenotype">Explore logistic regression models of genotype vs phenotype<a class="anchor" aria-label="anchor" href="#explore-logistic-regression-models-of-genotype-vs-phenotype"></a>
 </h3>
-<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cemsiis.meduniwien.ac.at/en/kb/science-research/software/statistical-software/firth-correction/" class="external-link">logistf</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cemsiis.meduniwien.ac.at/en/kb/science-research/software/statistical-software/firth-correction/" class="external-link">logistf</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># get binary matrix</span></span>
 <span><span class="va">ecoli_geno</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span>, <span class="st">"Name"</span><span class="op">)</span></span>
@@ -177,12 +182,13 @@
 <span></span>
 <span><span class="co"># organise layout using patchwork</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span>
-<span><span class="fu">compare_estimates</span><span class="op">(</span><span class="va">model_summary</span>, <span class="va">model_NWT_summary</span>, single_plot <span class="op">=</span> <span class="cn">F</span>, title1<span class="op">=</span><span class="st">"R"</span>, title2<span class="op">=</span><span class="st">"NWT"</span>, title<span class="op">=</span><span class="st">"R and NWT for Cipro"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html" class="external-link">plot_layout</a></span><span class="op">(</span>guides<span class="op">=</span><span class="st">"collect"</span>, axes<span class="op">=</span><span class="st">"collect"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">compare_estimates</span><span class="op">(</span><span class="va">model_summary</span>, <span class="va">model_NWT_summary</span>, single_plot <span class="op">=</span> <span class="cn">F</span>, title1<span class="op">=</span><span class="st">"R"</span>, title2<span class="op">=</span><span class="st">"NWT"</span>, title<span class="op">=</span><span class="st">"R and NWT for Cipro"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html" class="external-link">plot_layout</a></span><span class="op">(</span>guides<span class="op">=</span><span class="st">"collect"</span>, axes<span class="op">=</span><span class="st">"collect"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="download-and-plot-reference-mic-distribution-from-eucastorg">Download and plot reference MIC distribution from eucast.org<a class="anchor" aria-label="anchor" href="#download-and-plot-reference-mic-distribution-from-eucastorg"></a>
 </h3>
-<pre><code><span><span class="co"># get MIC distribution for ciprofloxacin, for all organisms</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># get MIC distribution for ciprofloxacin, for all organisms</span></span>
 <span><span class="fu"><a href="reference/get_eucast_amr_distribution.html">get_eucast_mic_distribution</a></span><span class="op">(</span><span class="st">"cipro"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># specify microorganism to only get results for that pathogen</span></span>
@@ -191,17 +197,18 @@
 <span><span class="co"># get disk diffusion data instead</span></span>
 <span><span class="va">kleb_cip_disk_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">get_eucast_disk_distribution</a></span><span class="op">(</span><span class="st">"cipro"</span>, <span class="st">"K. pneumoniae"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># plot the MIC data</span></span>
+<span><span class="co"># plot the MIC data </span></span>
 <span><span class="va">mics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">kleb_cip_mic_data</span><span class="op">$</span><span class="va">mic</span>, <span class="va">kleb_cip_mic_data</span><span class="op">$</span><span class="va">count</span><span class="op">)</span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mics</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"K. pneumoniae"</span>, title <span class="op">=</span> <span class="st">"Look at my MICs!"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mics</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"K. pneumoniae"</span>, title <span class="op">=</span> <span class="st">"Look at my MICs!"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="compare-own-mic-data-vs-reference-distribution-from-eucast">Compare own MIC data vs reference distribution from EUCAST<a class="anchor" aria-label="anchor" href="#compare-own-mic-data-vs-reference-distribution-from-eucast"></a>
 </h3>
-<pre><code><span><span class="va">my_mic_values</span> <span class="op">&lt;-</span> <span class="fu">AMR</span><span class="fu">::</span><span class="fu"><a href="https://msberends.github.io/AMR/reference/random.html" class="external-link">random_mic</a></span><span class="op">(</span><span class="fl">500</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_mic_values</span> <span class="op">&lt;-</span> <span class="fu">AMR</span><span class="fu">::</span><span class="fu"><a href="https://msberends.github.io/AMR/reference/random.html" class="external-link">random_mic</a></span><span class="op">(</span><span class="fl">500</span><span class="op">)</span></span>
 <span><span class="va">comparison</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">compare_mic_with_eucast</a></span><span class="op">(</span><span class="va">my_mic_values</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"K. pneumoniae"</span><span class="op">)</span></span>
 <span><span class="va">comparison</span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">comparison</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">comparison</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -256,15 +263,16 @@
 <div class="section level3">
 <h3 id="code-for-testing-harmonize_data---but-note-the-required-input-files-are-not-in-this-repo">Code for testing harmonize_data - but note the required input files are not in this repo<a class="anchor" aria-label="anchor" href="#code-for-testing-harmonize_data---but-note-the-required-input-files-are-not-in-this-repo"></a>
 </h3>
-<pre><code><span><span class="co"># test code amrfinder plus</span></span>
-<span><span class="co"># note both amrfinderplus test files appear malformed according to hamronize</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># test code amrfinder plus</span></span>
+<span><span class="co"># note both amrfinderplus test files appear malformed according to hamronize </span></span>
 <span><span class="co"># and produce errors but the code works</span></span>
 <span><span class="va">user_software_name</span> <span class="op">&lt;-</span> <span class="st">"amrfinderplus"</span></span>
 <span><span class="va">user_software_version</span> <span class="op">&lt;-</span> <span class="st">"3.12.8"</span></span>
 <span><span class="va">user_input_filename</span> <span class="op">&lt;-</span> <span class="st">"/Users/lshzd1/Desktop/ATB_Achromobacter_AFP.tsv"</span></span>
 <span><span class="va">user_database_version</span> <span class="op">&lt;-</span> <span class="st">"2024-01-31.1"</span></span>
 <span></span>
-<span><span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/harmonize_data.html">harmonize_data</a></span><span class="op">(</span><span class="va">user_software_name</span>, <span class="va">user_software_version</span>,</span>
+<span><span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/harmonize_data.html">harmonize_data</a></span><span class="op">(</span><span class="va">user_software_name</span>, <span class="va">user_software_version</span>, </span>
 <span>                            <span class="va">user_database_version</span>, <span class="va">user_input_filename</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -274,7 +282,7 @@
 <span><span class="va">user_input_filename</span> <span class="op">&lt;-</span> <span class="st">"/Users/lshzd1/Desktop/2025-01-14_11:06:52.908_KPN2009.fasta.txt"</span></span>
 <span><span class="va">user_database_version</span> <span class="op">&lt;-</span> <span class="st">"database y"</span></span>
 <span></span>
-<span><span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/harmonize_data.html">harmonize_data</a></span><span class="op">(</span><span class="va">user_software_name</span>, <span class="va">user_software_version</span>,</span>
+<span><span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/harmonize_data.html">harmonize_data</a></span><span class="op">(</span><span class="va">user_software_name</span>, <span class="va">user_software_version</span>, </span>
 <span>                            <span class="va">user_database_version</span>, <span class="va">user_input_filename</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -284,8 +292,8 @@
 <span><span class="va">user_input_filename</span> <span class="op">&lt;-</span> <span class="st">"/Users/lshzd1/Desktop/KPN2214.json"</span></span>
 <span><span class="va">user_database_version</span> <span class="op">&lt;-</span> <span class="st">"2024-08-06"</span></span>
 <span></span>
-<span><span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/harmonize_data.html">harmonize_data</a></span><span class="op">(</span><span class="va">user_software_name</span>, <span class="va">user_software_version</span>,</span>
-<span>                            <span class="va">user_database_version</span>, <span class="va">user_input_filename</span><span class="op">)</span></span></code></pre>
+<span><span class="va">test_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/harmonize_data.html">harmonize_data</a></span><span class="op">(</span><span class="va">user_software_name</span>, <span class="va">user_software_version</span>, </span>
+<span>                            <span class="va">user_database_version</span>, <span class="va">user_input_filename</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
