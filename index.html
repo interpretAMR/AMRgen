@@ -145,6 +145,64 @@
 <span><span class="co"># do upset plot of MIC vs genotype marker combinations (using AMRgen function, not requiring complexUpset)</span></span>
 <span><span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">cip_bin</span>, min_set_size<span class="op">=</span><span class="fl">2</span>, order<span class="op">=</span><span class="st">"mic"</span><span class="op">)</span></span></code></pre>
 </div>
+<div class="section level3">
+<h3 id="explore-logistic-regression-models-of-genotype-vs-phenotype">Explore logistic regression models of genotype vs phenotype<a class="anchor" aria-label="anchor" href="#explore-logistic-regression-models-of-genotype-vs-phenotype"></a>
+</h3>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cemsiis.meduniwien.ac.at/en/kb/science-research/software/statistical-software/firth-correction/" class="external-link">logistf</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># get binary matrix</span></span>
+<span><span class="va">ecoli_geno</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span>, <span class="st">"Name"</span><span class="op">)</span></span>
+<span><span class="va">cip_bin</span><span class="op">&lt;-</span> <span class="fu"><a href="reference/get_binary_matrix.html">get_binary_matrix</a></span><span class="op">(</span><span class="va">ecoli_geno</span>, <span class="va">ecoli_ast</span>, antibiotic<span class="op">=</span><span class="st">"Ciprofloxacin"</span>, drug_class_list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Quinolones"</span><span class="op">)</span>, sir_col<span class="op">=</span><span class="st">"pheno"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># logistic regression model for ciprofloxacin resistance (R vs S/I), predicted from all detected markers associated with quinolone resistance</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">logistf</span><span class="op">(</span><span class="va">R</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">cip_bin</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">id</span>,<span class="va">pheno</span>,<span class="va">NWT</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">model_summary</span> <span class="op">&lt;-</span> <span class="fu">logistf_details</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_estimates.html">plot_estimates</a></span><span class="op">(</span><span class="va">model_summary</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># include only markers observed in at least 10 samples</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">logistf</span><span class="op">(</span><span class="va">R</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">cip_bin</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">id</span>,<span class="va">pheno</span>,<span class="va">NWT</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select_if</span><span class="op">(</span><span class="fu">funs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">&gt;</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">model_summary</span> <span class="op">&lt;-</span> <span class="fu">logistf_details</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_estimates.html">plot_estimates</a></span><span class="op">(</span><span class="va">model_summary</span>, title<span class="op">=</span><span class="st">"Logistic regression on Cipro R"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># predict NWT (defined by ECOFF) rather than R</span></span>
+<span><span class="va">model_NWT</span> <span class="op">&lt;-</span> <span class="fu">logistf</span><span class="op">(</span><span class="va">NWT</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">cip_bin</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">id</span>,<span class="va">pheno</span>,<span class="va">R</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select_if</span><span class="op">(</span><span class="fu">funs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">&gt;</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">model_NWT_summary</span> <span class="op">&lt;-</span> <span class="fu">logistf_details</span><span class="op">(</span><span class="va">model_NWT</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_estimates.html">plot_estimates</a></span><span class="op">(</span><span class="va">model_NWT_summary</span>, title<span class="op">=</span><span class="st">"Logistic regression on Cipro NWT"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compare estimates for R and NWT (on a single plot)</span></span>
+<span><span class="fu">compare_estimates</span><span class="op">(</span><span class="va">model_summary</span>, <span class="va">model_NWT_summary</span>, single_plot <span class="op">=</span> <span class="cn">T</span>, title1<span class="op">=</span><span class="st">"R"</span>, title2<span class="op">=</span><span class="st">"NWT"</span>, title<span class="op">=</span><span class="st">"R and NWT for Cipro"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compare estimates for R and NWT (two plots, side-by-side)</span></span>
+<span><span class="fu">compare_estimates</span><span class="op">(</span><span class="va">model_summary</span>, <span class="va">model_NWT_summary</span>, single_plot <span class="op">=</span> <span class="cn">F</span>, title1<span class="op">=</span><span class="st">"R"</span>, title2<span class="op">=</span><span class="st">"NWT"</span>, title<span class="op">=</span><span class="st">"R and NWT for Cipro"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># organise layout using patchwork</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span>
+<span><span class="fu">compare_estimates</span><span class="op">(</span><span class="va">model_summary</span>, <span class="va">model_NWT_summary</span>, single_plot <span class="op">=</span> <span class="cn">F</span>, title1<span class="op">=</span><span class="st">"R"</span>, title2<span class="op">=</span><span class="st">"NWT"</span>, title<span class="op">=</span><span class="st">"R and NWT for Cipro"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html" class="external-link">plot_layout</a></span><span class="op">(</span>guides<span class="op">=</span><span class="st">"collect"</span>, axes<span class="op">=</span><span class="st">"collect"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="download-and-plot-reference-mic-distribution-from-eucastorg">Download and plot reference MIC distribution from eucast.org<a class="anchor" aria-label="anchor" href="#download-and-plot-reference-mic-distribution-from-eucastorg"></a>
+</h3>
+<pre><code><span><span class="co"># get MIC distribution for ciprofloxacin, for all organisms</span></span>
+<span><span class="fu"><a href="reference/get_eucast_amr_distribution.html">get_eucast_mic_distribution</a></span><span class="op">(</span><span class="st">"cipro"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># specify microorganism to only get results for that pathogen</span></span>
+<span><span class="va">kleb_cip_mic_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">get_eucast_mic_distribution</a></span><span class="op">(</span><span class="st">"cipro"</span>, <span class="st">"K. pneumoniae"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># get disk diffusion data instead</span></span>
+<span><span class="va">kleb_cip_disk_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">get_eucast_disk_distribution</a></span><span class="op">(</span><span class="st">"cipro"</span>, <span class="st">"K. pneumoniae"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># plot the MIC data</span></span>
+<span><span class="va">mics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">kleb_cip_mic_data</span><span class="op">$</span><span class="va">mic</span>, <span class="va">kleb_cip_mic_data</span><span class="op">$</span><span class="va">count</span><span class="op">)</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mics</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"K. pneumoniae"</span>, title <span class="op">=</span> <span class="st">"Look at my MICs!"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="compare-own-mic-data-vs-reference-distribution-from-eucast">Compare own MIC data vs reference distribution from EUCAST<a class="anchor" aria-label="anchor" href="#compare-own-mic-data-vs-reference-distribution-from-eucast"></a>
+</h3>
+<pre><code><span><span class="va">my_mic_values</span> <span class="op">&lt;-</span> <span class="fu">AMR</span><span class="fu">::</span><span class="fu"><a href="https://msberends.github.io/AMR/reference/random.html" class="external-link">random_mic</a></span><span class="op">(</span><span class="fl">500</span><span class="op">)</span></span>
+<span><span class="va">comparison</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">compare_mic_with_eucast</a></span><span class="op">(</span><span class="va">my_mic_values</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"K. pneumoniae"</span><span class="op">)</span></span>
+<span><span class="va">comparison</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">comparison</span><span class="op">)</span></span></code></pre>
+</div>
 </div>
 <div class="section level2">
 <h2 id="contributions">Contributions<a class="anchor" aria-label="anchor" href="#contributions"></a>
