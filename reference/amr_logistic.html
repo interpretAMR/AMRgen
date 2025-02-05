@@ -47,6 +47,7 @@
 <span>  sir_col <span class="op">=</span> <span class="st">"pheno"</span>,</span>
 <span>  ecoff_col <span class="op">=</span> <span class="st">"ecoff"</span>,</span>
 <span>  maf <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  glm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  single_plot <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"maroon"</span>, <span class="st">"blue4"</span><span class="op">)</span>,</span>
 <span>  axis_label_size <span class="op">=</span> <span class="fl">9</span></span>
@@ -93,6 +94,10 @@
 <dd><p>(Optional) An integer specifying the minimum allele frequency (MAF) threshold. Markers with a MAF lower than this value will be excluded. Defaults to 10.</p></dd>
 
 
+<dt id="arg-glm">glm<a class="anchor" aria-label="anchor" href="#arg-glm"></a></dt>
+<dd><p>(Optional) Change to TRUE to fit model with glm. Otherwise fit model with logistf (default).</p></dd>
+
+
 <dt id="arg-single-plot">single_plot<a class="anchor" aria-label="anchor" href="#arg-single-plot"></a></dt>
 <dd><p>(Optional) A logical value. If <code>TRUE</code>, a single plot is produced comparing the estimates for resistance (<code>R</code>) and non-resistance (<code>NWT</code>). Otherwise, two plots are printed side-by-side. Defaults to <code>TRUE</code>.</p></dd>
 
@@ -129,8 +134,7 @@
 <span class="r-in"><span>                      pheno_table <span class="op">=</span> <span class="va">ecoli_ast</span>, </span></span>
 <span class="r-in"><span>                      antibiotic <span class="op">=</span> <span class="st">"Ciprofloxacin"</span>, </span></span>
 <span class="r-in"><span>                      drug_class_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Quinolones"</span><span class="op">)</span>, </span></span>
-<span class="r-in"><span>                      maf <span class="op">=</span> <span class="fl">5</span>, </span></span>
-<span class="r-in"><span>                      single_plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                      maf <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Input is already a dataframe.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There was 1 warning in `mutate()`.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> In argument: `drug_agent = as.ab(drug_agent)`.</span>
@@ -141,6 +145,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Some samples had multiple phenotype rows, taking the most resistant only"</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(id)`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(id)`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Fitting logistic regression models using logistf"</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`funs()` was deprecated in dplyr 0.8.0.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use a list of either functions or lambdas:</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> </span>
