@@ -76,6 +76,20 @@ harmonize_data <- function(user_software_name,
   # convert output to data frame
   py_run_string("hamronized_output_df = pandas.DataFrame(hamronized_output)")
 
+  # convert output to AMRgen genotype data frame format
+  hamronized_data <- py$hamronized_output_df %>%
+    mutate(Sample_ID = input_sequence_id) %>%
+    mutate(marker = as.gene(gene_symbol)) %>%
+    mutate(drug_agent = antimicrobial_agent) %>%
+    select(Sample_ID, marker, drug_class, drug_agent)
+  
+  # Separate drug classes for rgi data
+  if (user_software_name=="rgi"){
+    hamronized_data <- hamronized_data %>%
+      separate_longer_delim(., drug_class, delim=";") %>%
+      mutate(drug_class = str_trim(drug_class, side = "both"))
+  }
+  
   # return harmonized data frame
-  return(py$hamronized_output_df)
+  return(hamronized_data)
 }
