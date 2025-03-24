@@ -146,7 +146,7 @@
 <span><span class="fu"><a href="reference/amr_complexUpset.html">amr_complexUpset</a></span><span class="op">(</span><span class="va">cip_bin</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># do upset plot of MIC vs genotype marker combinations, for combinations observed at least 5 times (using AMRgen function, not requiring complexUpset)</span></span>
-<span><span class="va">cip_upset</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">cip_bin</span>, min_set_size<span class="op">=</span><span class="fl">5</span>, order<span class="op">=</span><span class="st">"mic"</span><span class="op">)</span></span>
+<span><span class="va">cip_upset</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">cip_bin</span>, min_set_size<span class="op">=</span><span class="fl">5</span>, assay<span class="op">=</span><span class="st">"mic"</span>, order<span class="op">=</span><span class="st">"value"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># check the summary information for each marker combination (number of genomes, MIC median and interquartile range, number and fraction resistant)</span></span>
 <span><span class="va">cip_upset</span><span class="op">$</span><span class="va">summary</span></span></code></pre></div>
@@ -222,7 +222,7 @@
 <span><span class="fu"><a href="reference/amr_complexUpset.html">amr_complexUpset</a></span><span class="op">(</span><span class="va">soloPPV_cipro</span><span class="op">$</span><span class="va">amr_binary</span>, min_set_size<span class="op">=</span><span class="fl">5</span>, intersect_counts<span class="op">=</span><span class="cn">F</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># using the other upset function</span></span>
-<span><span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">soloPPV_cipro</span><span class="op">$</span><span class="va">amr_binary</span>, min_set_size<span class="op">=</span><span class="fl">2</span>, order<span class="op">=</span><span class="st">"mic"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="reference/amr_upset.html">amr_upset</a></span><span class="op">(</span><span class="va">soloPPV_cipro</span><span class="op">$</span><span class="va">amr_binary</span>, min_set_size<span class="op">=</span><span class="fl">2</span>, assay<span class="op">=</span><span class="st">"mic"</span>, order<span class="op">=</span><span class="st">"value"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="download-and-plot-reference-mic-distribution-from-eucastorg">Download and plot reference MIC distribution from eucast.org<a class="anchor" aria-label="anchor" href="#download-and-plot-reference-mic-distribution-from-eucastorg"></a>
