@@ -54,7 +54,8 @@ It also outputs a table summarising the MIC distribution (median, lower, upper) 
 <span>  plot_category <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  print_category_counts <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  print_set_size <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  boxplot_colour <span class="op">=</span> <span class="st">"grey"</span></span>
+<span>  boxplot_colour <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>  assay <span class="op">=</span> <span class="st">"mic"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -77,8 +78,8 @@ Default is 2. Only genes with at least this number of occurrences are included i
 <dt id="arg-order">order<a class="anchor" aria-label="anchor" href="#arg-order"></a></dt>
 <dd><p>A character string indicating the order of the combinations on the x-axis. Options are:
 - "": Default (decreasing frequency of combinations),
-- "genes": Order by the number of genes in each combination,
-- "mic": Order by the median MIC of each combination. Default is decreasing frequency.</p></dd>
+- "genes": Order by the number of genes in each combination.
+- "value": Order by the median assay value (MIC or disk zone) for each combination.</p></dd>
 
 
 <dt id="arg-plot-set-size">plot_set_size<a class="anchor" aria-label="anchor" href="#arg-plot-set-size"></a></dt>
@@ -105,6 +106,12 @@ with marker combination on the plot (default FALSE).</p></dd>
 <dt id="arg-boxplot-colour">boxplot_colour<a class="anchor" aria-label="anchor" href="#arg-boxplot-colour"></a></dt>
 <dd><p>Colour for lines of the box plots summarising the MIC distribution for each marker combination,
 (default "grey").</p></dd>
+
+
+<dt id="arg-assay">assay<a class="anchor" aria-label="anchor" href="#arg-assay"></a></dt>
+<dd><p>A character string indicating whether to plot MIC or disk diffusion data.
+- "mic": Plot MIC data, stored in column 'mic' of class 'mic'.
+- "disk": Plot disk diffusion data, stored in column 'disk' of class 'disk'.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -141,7 +148,7 @@ in different ways.</p>
 <span class="r-in"><span>              keep_assay_values_from <span class="op">=</span> <span class="st">"mic"</span></span></span>
 <span class="r-in"><span>           <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">amr_upset</span><span class="op">(</span><span class="va">binary_matrix</span>, min_set_size <span class="op">=</span> <span class="fl">3</span>, order <span class="op">=</span> <span class="st">"mic"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">amr_upset</span><span class="op">(</span><span class="va">binary_matrix</span>, min_set_size <span class="op">=</span> <span class="fl">3</span>, order <span class="op">=</span> <span class="st">"value"</span>, assay<span class="op">=</span><span class="st">"mic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
