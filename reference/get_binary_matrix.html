@@ -66,7 +66,8 @@ and <code>parse_amrfp</code> to import genotype data from AMRfinderPlus.</p>
 <span>  geno_sample_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  pheno_sample_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sir_col <span class="op">=</span> <span class="st">"pheno"</span>,</span>
-<span>  ecoff_col <span class="op">=</span> <span class="st">"ecoff"</span></span>
+<span>  ecoff_col <span class="op">=</span> <span class="st">"ecoff"</span>,</span>
+<span>  most_resistant <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -135,6 +136,11 @@ the resistance interpretation (SIR) data. The values should be interpretable as 
 <dd><p>A character string specifying the column name in <code>pheno_table</code> that contains
 the ECOFF interpretation of phenotype. The values should be interpretable as "WT" (wildtype)
 or "NWT" (nonwildtype).</p></dd>
+
+
+<dt id="arg-most-resistant">most_resistant<a class="anchor" aria-label="anchor" href="#arg-most-resistant"></a></dt>
+<dd><p>A logical indicating whether, when multiple phenotype entries are present for the same
+sample and drug, whether to keep the most resistant (otherwise the least resistant is kept). Default TRUE.</p></dd>
 
 </dl></div>
     <div class="section level2">

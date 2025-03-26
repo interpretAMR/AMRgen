@@ -81,31 +81,39 @@ Expected columns are:</p><ul><li><p><code>marker</code>: The name of the marker 
 
 
 <dt id="arg-title">title<a class="anchor" aria-label="anchor" href="#arg-title"></a></dt>
-<dd><p>The main title of the combined plot, if single_plot is TRUE.</p></dd>
+<dd><p>(optional) The main title of the combined plot, if single_plot is TRUE.</p></dd>
 
 
 <dt id="arg-sig">sig<a class="anchor" aria-label="anchor" href="#arg-sig"></a></dt>
-<dd><p>For individual plots, the p-value threshold for data points to highlight as significant. Defaults to 0.05.</p></dd>
+<dd><p>(optional) For individual plots, the p-value threshold for data points to highlight as significant. Defaults to 0.05.</p></dd>
 
 
 <dt id="arg-colors">colors<a class="anchor" aria-label="anchor" href="#arg-colors"></a></dt>
-<dd><p>For combined plot, a vector of two colors to represent the two input datasets.</p></dd>
+<dd><p>(optional) For combined plot, a vector of two colors to represent the two input datasets.</p></dd>
 
 
 <dt id="arg-x-title">x_title<a class="anchor" aria-label="anchor" href="#arg-x-title"></a></dt>
-<dd><p>The title for the x-axis. Defaults to "Coefficient (95% CI)".</p></dd>
+<dd><p>(optional) The title for the x-axis. Defaults to "Coefficient (95% CI)".</p></dd>
 
 
 <dt id="arg-y-title">y_title<a class="anchor" aria-label="anchor" href="#arg-y-title"></a></dt>
-<dd><p>The title for the y-axis. Defaults to "Variant".</p></dd>
+<dd><p>(optional) The title for the y-axis. Defaults to "Variant".</p></dd>
 
 
 <dt id="arg-axis-label-size">axis_label_size<a class="anchor" aria-label="anchor" href="#arg-axis-label-size"></a></dt>
-<dd><p>The font size of the axis labels. Defaults to 9.</p></dd>
+<dd><p>(optional) The font size of the axis labels. Defaults to 9.</p></dd>
 
 
 <dt id="arg-single-plot">single_plot<a class="anchor" aria-label="anchor" href="#arg-single-plot"></a></dt>
 <dd><p>A boolean indicating whether to make a single combined plot (TRUE), or plot each dataset side-by-side (FALSE).</p></dd>
+
+
+<dt id="arg-pd">pd<a class="anchor" aria-label="anchor" href="#arg-pd"></a></dt>
+<dd><p>(optional) Position dodge, i.e. spacing for the 2 estimates to be positioned above/below the line. Default 'position_dodge(width = 0.8)'</p></dd>
+
+
+<dt id="arg-marker-order">marker_order<a class="anchor" aria-label="anchor" href="#arg-marker-order"></a></dt>
+<dd><p>(optional) Vector indicating the order of the markers to be plotted on the y-axis.</p></dd>
 
 </dl></div>
     <div class="section level2">
