@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">AMRgen</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,40 +113,30 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list with three components:</p>
-<dl><dt>bin_mat</dt>
-<dd><p>The binary matrix of genetic data and phenotypic resistance information.</p></dd>
-
-<dt>modelR</dt>
-<dd><p>The fitted logistic regression model for resistance (<code>R</code>).</p></dd>
-
-<dt>modelNWT</dt>
-<dd><p>The fitted logistic regression model for non-resistance (<code>NWT</code>).</p></dd>
-
-<dt>plot</dt>
-<dd><p>A ggplot object comparing the estimates for resistance and non-resistance with corresponding statistical significance indicators.</p></dd>
-
-</dl></div>
+    <p>A list with the following components:</p><ul><li><p><code>bin_mat</code>: The binary matrix of genetic data and phenotypic resistance information.</p></li>
+<li><p><code>modelR</code>: The fitted logistic regression model for resistance (<code>R</code>).</p></li>
+<li><p><code>modelNWT</code>: The fitted logistic regression model for non-resistance (<code>NWT</code>).</p></li>
+<li><p><code>plot</code>: A ggplot object comparing the estimates for resistance and non-resistance with corresponding statistical significance indicators.</p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example usage of the amr_logistic function</span></span></span>
-<span class="r-in"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">amr_logistic</span><span class="op">(</span>geno_table <span class="op">=</span> <span class="fu"><a href="import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span>, <span class="st">"Name"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                      pheno_table <span class="op">=</span> <span class="va">ecoli_ast</span>,</span></span>
-<span class="r-in"><span>                      antibiotic <span class="op">=</span> <span class="st">"Ciprofloxacin"</span>,</span></span>
-<span class="r-in"><span>                      drug_class_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Quinolones"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                      maf <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">amr_logistic</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  geno_table <span class="op">=</span> <span class="fu"><a href="import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span>, <span class="st">"Name"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  pheno_table <span class="op">=</span> <span class="va">ecoli_ast</span>,</span></span>
+<span class="r-in"><span>  antibiotic <span class="op">=</span> <span class="st">"Ciprofloxacin"</span>,</span></span>
+<span class="r-in"><span>  drug_class_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Quinolones"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  maf <span class="op">=</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Input is already a dataframe.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Some samples had multiple phenotype rows, taking the most resistant only"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Defining NWT using ecoff column provided: ecoff"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Fitting logistic regression models using logistf"</span>
 <span class="r-plt img"><img src="amr_logistic-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># To access the plot:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">plot</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="amr_logistic-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

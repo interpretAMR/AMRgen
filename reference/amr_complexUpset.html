@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">AMRgen</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
 <span>  colour_by <span class="op">=</span> <span class="st">"pheno"</span>,</span>
 <span>  plot_breakpoints <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  organism <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  break_guide <span class="op">=</span> <span class="st">"EUCAST 2024"</span>,</span>
+<span>  break_guide <span class="op">=</span> <span class="st">"EUCAST 2025"</span>,</span>
 <span>  break_type <span class="op">=</span> <span class="st">"ECOFF"</span>,</span>
 <span>  drug <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sort_intersections_by <span class="op">=</span> <span class="st">"degree"</span>,</span>
@@ -96,7 +96,7 @@
 
 
 <dt id="arg-break-guide">break_guide<a class="anchor" aria-label="anchor" href="#arg-break-guide"></a></dt>
-<dd><p>A character string specifying the breakpoint guideline (e.g., <code>"EUCAST 2024"</code>). Default is <code>"EUCAST 2024"</code>.</p></dd>
+<dd><p>A character string specifying the breakpoint guideline (e.g., <code>"EUCAST 2025"</code>). Default is <code>"EUCAST 2025"</code>.</p></dd>
 
 
 <dt id="arg-break-type">break_type<a class="anchor" aria-label="anchor" href="#arg-break-type"></a></dt>
@@ -105,6 +105,26 @@
 
 <dt id="arg-drug">drug<a class="anchor" aria-label="anchor" href="#arg-drug"></a></dt>
 <dd><p>A character string specifying the antimicrobial agent to be analysed.</p></dd>
+
+
+<dt id="arg-sort-intersections-by">sort_intersections_by<a class="anchor" aria-label="anchor" href="#arg-sort-intersections-by"></a></dt>
+<dd><p>A character string passed to <code><a href="https://krassowski.github.io/complex-upset/reference/upset.html" class="external-link">ComplexUpset::upset()</a></code> to control sorting of intersections (e.g., <code>"degree"</code> or <code>"cardinality"</code>).</p></dd>
+
+
+<dt id="arg-sort-intersections">sort_intersections<a class="anchor" aria-label="anchor" href="#arg-sort-intersections"></a></dt>
+<dd><p>A character string specifying the order of intersections (<code>"ascending"</code> or <code>"descending"</code>).</p></dd>
+
+
+<dt id="arg-show-intersect-size">show_intersect_size<a class="anchor" aria-label="anchor" href="#arg-show-intersect-size"></a></dt>
+<dd><p>Logical. If <code>TRUE</code>, shows bar plot of intersection sizes. Default is <code>TRUE</code>.</p></dd>
+
+
+<dt id="arg-intersect-counts">intersect_counts<a class="anchor" aria-label="anchor" href="#arg-intersect-counts"></a></dt>
+<dd><p>Logical. If <code>TRUE</code>, counts are displayed in the intersection size bars. Default is <code>TRUE</code>.</p></dd>
+
+
+<dt id="arg-heights">heights<a class="anchor" aria-label="anchor" href="#arg-heights"></a></dt>
+<dd><p>Numeric vector specifying relative heights of the upset matrix vs annotation plots. If <code>NULL</code>, defaults based on <code>show_intersect_size</code>.</p></dd>
 
 
 <dt id="arg-colour-values">colour_values<a class="anchor" aria-label="anchor" href="#arg-colour-values"></a></dt>
@@ -118,26 +138,24 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example usage:</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">ecoli_geno</span> <span class="op">&lt;-</span> <span class="fu"><a href="import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span>, <span class="st">"Name"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ecoli_geno</span> <span class="op">&lt;-</span> <span class="fu"><a href="import_amrfp.html">import_amrfp</a></span><span class="op">(</span><span class="va">ecoli_geno_raw</span>, <span class="st">"Name"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Input is already a dataframe.</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">binary_matrix</span><span class="op">&lt;-</span> <span class="fu"><a href="get_binary_matrix.html">get_binary_matrix</a></span><span class="op">(</span>geno_table<span class="op">=</span><span class="va">ecoli_geno</span>, </span></span>
-<span class="r-in"><span>              pheno_table<span class="op">=</span><span class="va">ecoli_ast</span>, </span></span>
-<span class="r-in"><span>              antibiotic<span class="op">=</span><span class="st">"Ciprofloxacin"</span>, </span></span>
-<span class="r-in"><span>              drug_class_list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Quinolones"</span><span class="op">)</span>, </span></span>
-<span class="r-in"><span>              sir_col<span class="op">=</span><span class="st">"pheno"</span>, </span></span>
-<span class="r-in"><span>              keep_assay_values<span class="op">=</span><span class="cn">TRUE</span>, </span></span>
-<span class="r-in"><span>              keep_assay_values_from <span class="op">=</span> <span class="st">"mic"</span></span></span>
-<span class="r-in"><span>           <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">binary_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_binary_matrix.html">get_binary_matrix</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  geno_table <span class="op">=</span> <span class="va">ecoli_geno</span>,</span></span>
+<span class="r-in"><span>  pheno_table <span class="op">=</span> <span class="va">ecoli_ast</span>,</span></span>
+<span class="r-in"><span>  antibiotic <span class="op">=</span> <span class="st">"Ciprofloxacin"</span>,</span></span>
+<span class="r-in"><span>  drug_class_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Quinolones"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  sir_col <span class="op">=</span> <span class="st">"pheno"</span>,</span></span>
+<span class="r-in"><span>  keep_assay_values <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  keep_assay_values_from <span class="op">=</span> <span class="st">"mic"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Some samples had multiple phenotype rows, taking the most resistant only"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Defining NWT using ecoff column provided: ecoff"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">amr_complexUpset</span><span class="op">(</span><span class="va">binary_matrix</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 171 rows containing non-finite outside the scale range (`stat_sum()`).</span>
 <span class="r-plt img"><img src="amr_complexUpset-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

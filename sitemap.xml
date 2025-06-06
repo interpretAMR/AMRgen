@@ -6,11 +6,11 @@
 <url><loc>https://interpretamr.github.io/AMRgen/authors.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/index.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/AMRgen-package.html</loc></url>
-<url><loc>https://interpretamr.github.io/AMRgen/reference/AMRgen_barplot_mic_gen.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/amr_complexUpset.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/amr_logistic.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/amr_upset.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/as.gene.html</loc></url>
+<url><loc>https://interpretamr.github.io/AMRgen/reference/barplot_mic_gen.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/compare_estimates.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/compare_geno_pheno_id.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/ecoli_ast.html</loc></url>
@@ -31,8 +31,8 @@
 <url><loc>https://interpretamr.github.io/AMRgen/reference/merge_logreg_soloppv.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/plot_combined_stats.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/plot_estimates.html</loc></url>
+<url><loc>https://interpretamr.github.io/AMRgen/reference/plot_solo_logReg.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/reexports.html</loc></url>
 <url><loc>https://interpretamr.github.io/AMRgen/reference/solo_ppv_analysis.html</loc></url>
-<url><loc>https://interpretamr.github.io/AMRgen/reference/stripRangeValues.html</loc></url>
 </urlset>
 
