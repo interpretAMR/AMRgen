@@ -13,7 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Genotype-Phenotype Integration for Antimicrobial Resistance Research">
 <meta name="description" content="The AMRgen package provides tools for interpreting antimicrobial resistance (AMR) genes, integrating genomic data with phenotypic antimicrobial susceptibility testing (AST) data, and calculating genotype-phenotype associations. This package extends the functionality of the AMR package, enabling researchers to fetch MIC distribution data from EUCAST, visualise multidrug resistance patterns using UpSet plots, and generate NCBI-compliant antibiograms. Designed for AMR research and surveillance, AMRgen aims to support data-driven decision-making in combating AMR on a global scale.">
 <meta property="og:description" content="The AMRgen package provides tools for interpreting antimicrobial resistance (AMR) genes, integrating genomic data with phenotypic antimicrobial susceptibility testing (AST) data, and calculating genotype-phenotype associations. This package extends the functionality of the AMR package, enabling researchers to fetch MIC distribution data from EUCAST, visualise multidrug resistance patterns using UpSet plots, and generate NCBI-compliant antibiograms. Designed for AMR research and surveillance, AMRgen aims to support data-driven decision-making in combating AMR on a global scale.">
-<meta property="og:image" content="https://interpretamr.github.io/AMRgen/logo.png">
+<meta property="og:image" content="https://amrverse.github.io/AMRgen/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -37,7 +37,7 @@
 <li class="nav-item"><a class="nav-link" href="articles/AnalysingGenoPhenoData.html"><span class="fa fa-book"></span> Vignettes</a></li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/interpretAMR/AMRgen"><span class="fa fab fa-github"></span> Source Code</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/amrverse/AMRgen"><span class="fa fab fa-github"></span> Source Code</a></li>
       </ul>
 </div>
 
@@ -57,7 +57,7 @@
 <p><img src="logo.png" width="200" align="right" alt="AMRgen"></p>
 <p><strong>AMRgen</strong> is an open-source R package designed to bridge the gap between genotypic and phenotypic antimicrobial resistance (AMR) data. Developed as an extension to the <a href="https://github.com/msberends/AMR" class="external-link">AMR R package</a>, it provides tools to interpret AMR genes, integrate these findings with antimicrobial susceptibility test (AST) data, and calculate genotype-phenotype associations.</p>
 <p>This package is developed in collaboration with the ESGEM-AMR Working Group and is tailored for researchers and healthcare professionals tackling AMR globally.</p>
-<p>The <a href="https://amrverse.github.io/AMRgen/index.html" class="external-link">AMRgen website</a> has full function <a href="https://amrverse.github.io/AMRgen/reference/index.html" class="external-link">documentation</a> and a <a href="https://amrverse.github.io/AMRgen/articles/AnalysingGenoPhenoData.html" class="external-link">Vignette</a> working through analysing geno/pheno data using key functions.</p>
+<p>The <a href="https://amrverse.github.io/AMRgen/index.html">AMRgen website</a> has full function <a href="https://amrverse.github.io/AMRgen/reference/index.html">documentation</a> and a <a href="https://amrverse.github.io/AMRgen/articles/AnalysingGenoPhenoData.html">Vignette</a> working through analysing geno/pheno data using key functions.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -103,7 +103,7 @@
 <h2 id="quick-usage-examples">Quick Usage Examples<a class="anchor" aria-label="anchor" href="#quick-usage-examples"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://interpretAMR.github.io/AMRgen/" class="external-link">AMRgen</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://amrverse.github.io/AMRgen/">AMRgen</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="investigate-ciprofloxacin-resistance-vs-quinolone-genotype-markers-via-solo-ppv-and-upset-plots">Investigate ciprofloxacin resistance vs quinolone genotype markers, via solo PPV and upset plots<a class="anchor" aria-label="anchor" href="#investigate-ciprofloxacin-resistance-vs-quinolone-genotype-markers-via-solo-ppv-and-upset-plots"></a>
 </h3>
@@ -144,7 +144,7 @@
 <span><span class="va">comparison</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">compare_mic_with_eucast</a></span><span class="op">(</span><span class="va">ecoli_cip</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"E. coli"</span><span class="op">)</span></span>
 <span><span class="va">comparison</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">comparison</span><span class="op">)</span></span></code></pre></div>
-<p>For more see the <a href="https://amrverse.github.io/AMRgen/articles/AnalysingGenoPhenoData.html" class="external-link">Vignette</a>.</p>
+<p>For more see the <a href="https://amrverse.github.io/AMRgen/articles/AnalysingGenoPhenoData.html">Vignette</a>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -161,7 +161,7 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/interpretAMR/AMRgen/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/amrverse/AMRgen/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
 
@@ -200,7 +200,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Free and Open Source (GPL-2), brought by interpretAMR-AMRgen Development Team</p>
+  <p>Free and Open Source (GPL-2), brought by amrverse-AMRgen Development Team</p>
 </div>
 
 <div class="pkgdown-footer-right">
