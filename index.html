@@ -54,9 +54,10 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
+<p><img src="logo.png" width="200" align="right" alt="AMRgen"></p>
 <p><strong>AMRgen</strong> is an open-source R package designed to bridge the gap between genotypic and phenotypic antimicrobial resistance (AMR) data. Developed as an extension to the <a href="https://github.com/msberends/AMR" class="external-link">AMR R package</a>, it provides tools to interpret AMR genes, integrate these findings with antimicrobial susceptibility test (AST) data, and calculate genotype-phenotype associations.</p>
 <p>This package is developed in collaboration with the ESGEM-AMR Working Group and is tailored for researchers and healthcare professionals tackling AMR globally.</p>
-<p>The <a href="https://interpretamr.github.io/AMRgen/index.html">AMRgen website</a> has full function <a href="https://interpretamr.github.io/AMRgen/reference/index.html">documentation</a> and a <a href="https://interpretamr.github.io/AMRgen/articles/AnalysingGenoPhenoData.html">Vignette</a> working through analysing geno/pheno data using key functions.</p>
+<p>The <a href="https://amrverse.github.io/AMRgen/index.html" class="external-link">AMRgen website</a> has full function <a href="https://amrverse.github.io/AMRgen/reference/index.html" class="external-link">documentation</a> and a <a href="https://amrverse.github.io/AMRgen/articles/AnalysingGenoPhenoData.html" class="external-link">Vignette</a> working through analysing geno/pheno data using key functions.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -94,7 +95,7 @@
 <p>Then install this package</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install from GitHub</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"interpretAMR/AMRgen"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"amrverse/AMRgen"</span><span class="op">)</span></span></code></pre></div>
 <p>It is best to restart R before running the installation. If you didn’t do this and/or you encounter issues with the examples below after install, it may help to also restart after the install and start fresh with the examples below.</p>
 </div>
 </div>
@@ -143,7 +144,7 @@
 <span><span class="va">comparison</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_eucast_amr_distribution.html">compare_mic_with_eucast</a></span><span class="op">(</span><span class="va">ecoli_cip</span>, ab <span class="op">=</span> <span class="st">"cipro"</span>, mo <span class="op">=</span> <span class="st">"E. coli"</span><span class="op">)</span></span>
 <span><span class="va">comparison</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">comparison</span><span class="op">)</span></span></code></pre></div>
-<p>For more see the <a href="https://interpretamr.github.io/AMRgen/articles/AnalysingGenoPhenoData.html">Vignette</a>.</p>
+<p>For more see the <a href="https://amrverse.github.io/AMRgen/articles/AnalysingGenoPhenoData.html" class="external-link">Vignette</a>.</p>
 </div>
 </div>
 <div class="section level2">
