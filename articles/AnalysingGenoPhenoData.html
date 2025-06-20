@@ -111,17 +111,18 @@ the key columns needed to work with the <code>AMRgen</code> package.</p>
 <span></span>
 <span><span class="co"># Check the format of the processed genotype table</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ecoli_geno</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 13</span></span></span>
-<span><span class="co">#&gt;   Name         marker     drug_agent drug_class   `Gene symbol` `Hierarchy node`</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;gene&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;ab&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SAMN03177615 blaEC      <span style="color: #BB0000;">NA</span>         Beta-lactam… blaEC         blaEC           </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SAMN03177615 acrF       <span style="color: #BB0000;">NA</span>         Efflux       acrF          acrF            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SAMN03177615 glpT_E448K FOS        Other antib… glpT_E448K    glpT            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SAMN03177615 floR       CHL        Amphenicols  floR          floR            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> SAMN03177615 floR       FLR        Other antib… floR          floR            </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> SAMN03177615 mdtM       <span style="color: #BB0000;">NA</span>         Efflux       mdtM          mdtM            </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: `Element type` &lt;chr&gt;, `Element subtype` &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   Class &lt;chr&gt;, Subclass &lt;chr&gt;, `% Coverage of reference sequence` &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 17</span></span></span>
+<span><span class="co">#&gt;   Name         marker    gene  mutation node  marker.label drug_agent drug_class</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;gene&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;ab&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SAMN03177615 blaEC     blaEC <span style="color: #BB0000;">NA</span>       blaEC blaEC        <span style="color: #BB0000;">NA</span>         Beta-lact…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SAMN03177615 acrF      acrF  <span style="color: #BB0000;">NA</span>       acrF  acrF         <span style="color: #BB0000;">NA</span>         Efflux    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SAMN03177615 glpT_E44… glpT  p.Glu44… glpT  glpT:p.Glu4… FOS        Other ant…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SAMN03177615 floR      floR  <span style="color: #BB0000;">NA</span>       floR  floR         CHL        Amphenico…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> SAMN03177615 floR      floR  <span style="color: #BB0000;">NA</span>       floR  floR         FLR        Other ant…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> SAMN03177615 mdtM      mdtM  <span style="color: #BB0000;">NA</span>       mdtM  mdtM         <span style="color: #BB0000;">NA</span>         Efflux    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 9 more variables: `Gene symbol` &lt;chr&gt;, `Hierarchy node` &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `Element type` &lt;chr&gt;, `Element subtype` &lt;chr&gt;, Class &lt;chr&gt;, Subclass &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   `% Coverage of reference sequence` &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   `% Identity to reference sequence` &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   `Accession of closest sequence` &lt;chr&gt;</span></span></span></code></pre></div>
 <p>The genotype table has one row for each genetic marker detected in an
@@ -504,35 +505,35 @@ regression models</p></li>
 <span><span class="co"># Output tables</span></span>
 <span><span class="va">models</span><span class="op">$</span><span class="va">modelR</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 22 × 5</span></span></span>
-<span><span class="co">#&gt;    marker        est ci.lower ci.upper       pval</span></span>
-<span><span class="co">#&gt;  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> (Intercept) -<span style="color: #BB0000;">4.83</span>  -<span style="color: #BB0000;">5.19</span>     -<span style="color: #BB0000;">4.51</span>  0         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> gyrA_S83L    4.00   3.57      4.44  0         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> gyrA_D87Y    2.53  -<span style="color: #BB0000;">0.013</span><span style="color: #BB0000; text-decoration: underline;">0</span>    4.46  0.051<span style="text-decoration: underline;">1</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> gyrA_D87N    2.69   0.662     4.33  0.010<span style="text-decoration: underline;">5</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> parC_S80I    3.03   1.60      5.25  0.000<span style="text-decoration: underline;">002</span>01</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> parE_S458A  -<span style="color: #BB0000;">2.05</span>  -<span style="color: #BB0000;">4.79</span>      0.190 0.076<span style="text-decoration: underline;">2</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> parC_S80R    1.70   0.046<span style="text-decoration: underline;">2</span>    4.02  0.043<span style="text-decoration: underline;">4</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> parE_L416F   1.83  -<span style="color: #BB0000;">1.30</span>      6.85  0.250     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> parC_S57T   -<span style="color: #BB0000;">1.29</span>  -<span style="color: #BB0000;">5.88</span>      1.30  0.434     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> soxS_A12S    2.32  -<span style="color: #BB0000;">0.673</span>     4.88  0.150     </span></span>
+<span><span class="co">#&gt;    marker        est ci.lower ci.upper     pval</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> (Intercept) -<span style="color: #BB0000;">4.83</span>   -<span style="color: #BB0000;">5.17</span>   -<span style="color: #BB0000;">4.50</span>   0       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> gyrA_S83L    4.00    3.57    4.44   0       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> gyrA_D87Y    2.53    0.553   4.50   0.012<span style="text-decoration: underline;">1</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> gyrA_D87N    2.69    1.06    4.32   0.001<span style="text-decoration: underline;">19</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> parC_S80I    3.03    1.42    4.65   0.000<span style="text-decoration: underline;">231</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> parE_S458A  -<span style="color: #BB0000;">2.05</span>   -<span style="color: #BB0000;">4.18</span>    0.072<span style="text-decoration: underline;">4</span> 0.058<span style="text-decoration: underline;">3</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> parC_S80R    1.70   -<span style="color: #BB0000;">0.131</span>   3.53   0.068<span style="text-decoration: underline;">7</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> parE_L416F   1.83   -<span style="color: #BB0000;">1.26</span>    4.92   0.245   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> parC_S57T   -<span style="color: #BB0000;">1.29</span>   -<span style="color: #BB0000;">4.22</span>    1.64   0.388   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> soxS_A12S    2.32   -<span style="color: #BB0000;">0.282</span>   4.93   0.080<span style="text-decoration: underline;">5</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more rows</span></span></span>
 <span><span class="co">#&gt; Use ggplot2::autoplot() on this output to visualise</span></span>
 <span></span>
 <span><span class="va">models</span><span class="op">$</span><span class="va">modelNWT</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 22 × 5</span></span></span>
 <span><span class="co">#&gt;    marker           est ci.lower ci.upper    pval</span></span>
-<span><span class="co">#&gt;  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> (Intercept) -<span style="color: #BB0000;">1.09</span>      -<span style="color: #BB0000;">1.17</span>     -<span style="color: #BB0000;">1.01</span> 0      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> gyrA_S83L    2.05       1.66      2.47 0      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> gyrA_D87Y    0.584     -<span style="color: #BB0000;">1.25</span>      2.25 0.502  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> gyrA_D87N    2.06       0.602     3.84 0.005<span style="text-decoration: underline;">55</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> parC_S80I    2.81       0.670     8.31 0.004<span style="text-decoration: underline;">47</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> parE_S458A  -<span style="color: #BB0000;">1.61</span>      -<span style="color: #BB0000;">6.95</span>      1.43 0.304  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> parC_S80R    1.08      -<span style="color: #BB0000;">1.18</span>      5.98 0.412  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> parE_L416F  -<span style="color: #BB0000;">0.002</span><span style="color: #BB0000; text-decoration: underline;">72</span>   -<span style="color: #BB0000;">3.26</span>      5.03 0.999  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> parC_S57T    0.782      0.160     1.39 0.014<span style="text-decoration: underline;">4</span> </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> soxS_A12S    1.96       0.177     4.29 0.031<span style="text-decoration: underline;">2</span> </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> (Intercept) -<span style="color: #BB0000;">1.09</span>     -<span style="color: #BB0000;">1.17</span>      -<span style="color: #BB0000;">1.01</span> 0      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> gyrA_S83L    2.05      1.65       2.45 0      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> gyrA_D87Y    0.584    -<span style="color: #BB0000;">1.02</span>       2.19 0.476  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> gyrA_D87N    2.06      0.616      3.51 0.005<span style="text-decoration: underline;">19</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> parC_S80I    2.81      0.319      5.30 0.027<span style="text-decoration: underline;">1</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> parE_S458A  -<span style="color: #BB0000;">1.61</span>     -<span style="color: #BB0000;">4.38</span>       1.17 0.257  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> parC_S80R    1.08     -<span style="color: #BB0000;">1.77</span>       3.92 0.458  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> parE_L416F  -<span style="color: #BB0000;">0.002</span><span style="color: #BB0000; text-decoration: underline;">72</span>  -<span style="color: #BB0000;">3.06</span>       3.06 0.999  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> parC_S57T    0.782     0.173      1.39 0.011<span style="text-decoration: underline;">9</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> soxS_A12S    1.96      0.086<span style="text-decoration: underline;">7</span>     3.84 0.040<span style="text-decoration: underline;">3</span> </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 12 more rows</span></span></span>
 <span><span class="co">#&gt; Use ggplot2::autoplot() on this output to visualise</span></span>
 <span></span>

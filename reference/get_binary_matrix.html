@@ -49,6 +49,7 @@
 <span>  pheno_sample_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sir_col <span class="op">=</span> <span class="st">"pheno"</span>,</span>
 <span>  ecoff_col <span class="op">=</span> <span class="st">"ecoff"</span>,</span>
+<span>  marker_col <span class="op">=</span> <span class="st">"marker"</span>,</span>
 <span>  most_resistant <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -99,6 +100,10 @@
 
 <dt id="arg-ecoff-col">ecoff_col<a class="anchor" aria-label="anchor" href="#arg-ecoff-col"></a></dt>
 <dd><p>A character string specifying the column name in <code>pheno_table</code> that contains the ECOFF interpretation of phenotype. The values should be interpretable as "WT" (wildtype) or "NWT" (nonwildtype).</p></dd>
+
+
+<dt id="arg-marker-col">marker_col<a class="anchor" aria-label="anchor" href="#arg-marker-col"></a></dt>
+<dd><p>A character string specifying the column name in <code>geno_table</code> containing the marker identifiers. Defaults to <code>"marker"</code>.</p></dd>
 
 
 <dt id="arg-most-resistant">most_resistant<a class="anchor" aria-label="anchor" href="#arg-most-resistant"></a></dt>

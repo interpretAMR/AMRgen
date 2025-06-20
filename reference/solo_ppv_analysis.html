@@ -45,6 +45,7 @@
 <span>  geno_sample_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  pheno_sample_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  sir_col <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  marker_col <span class="op">=</span> <span class="st">"marker"</span>,</span>
 <span>  keep_assay_values <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  min <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  axis_label_size <span class="op">=</span> <span class="fl">9</span>,</span>
@@ -83,6 +84,10 @@
 
 <dt id="arg-sir-col">sir_col<a class="anchor" aria-label="anchor" href="#arg-sir-col"></a></dt>
 <dd><p>A character string specifying the column name in <code>pheno_table</code> that contains the resistance interpretation (SIR) data. The values should be interpretable as "R" (resistant), "I" (intermediate), or "S" (susceptible).</p></dd>
+
+
+<dt id="arg-marker-col">marker_col<a class="anchor" aria-label="anchor" href="#arg-marker-col"></a></dt>
+<dd><p>A character string specifying the column name in <code>geno_table</code> containing the marker identifiers. Defaults to <code>"marker"</code>.</p></dd>
 
 
 <dt id="arg-keep-assay-values">keep_assay_values<a class="anchor" aria-label="anchor" href="#arg-keep-assay-values"></a></dt>
